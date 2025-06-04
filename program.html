@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee List</title>
+</head>
+<body class="container">
+   <h2 style="text-align: center;">Add Employees</h2>
+  <div class="centered">
+      <input id="username" type="text" placeholder="Username">
+      <input id="password" type="password" placeholder="Password">
+      <input id="workarea" type="text" placeholder="Work Area">
+      <button onclick="addUser()">Add User</button>
+    </div>
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #userList {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+    #userList th, #userList td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    #userList th {
+      background-color: #f0f0f0;
+    }
+    .centered {
+      text-align: center;
+      margin: 0 auto;
+    }
+</style>
+
+<h3 style="text-align: center;">User list</h3>
+<table id="userList">
+  <tr>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Work Area</th>
+  </tr>
+</table>
+
+<script>
+function addUser() {
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const workarea = document.getElementById('workarea').value.trim();
+
+  if (username && password && workarea) {
+    const tableRow = document.createElement('tr');
+    const usernameCell = document.createElement('td');
+    const passwordCell = document.createElement('td');
+    const workareaCell = document.createElement('td');
+
+    usernameCell.textContent = ' ' + username;
+    passwordCell.textContent = ' ' + password;
+    workareaCell.textContent = ' ' + workarea;
+
+    tableRow.appendChild(usernameCell);
+    tableRow.appendChild(passwordCell);
+    tableRow.appendChild(workareaCell);
+
+    const userList = document.getElementById('userList');
+    userList.insertBefore(tableRow, userList.rows[1]);
+
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('workarea').value = '';
+  } else {
+    alert('Please fill in all fields.');
+  }
+}
+</script>
+
+</body>
+</html>
